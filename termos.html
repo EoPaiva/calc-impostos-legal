@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Termos de Uso da Calc Impostos BR uPaiva — extensão Chrome de cálculo de impostos para freelancer brasileiro." />
+  <title>Termos de Uso — Calc Impostos BR uPaiva</title>
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent: #00d68f;
+      --accent-soft: rgba(0, 214, 143, 0.12);
+      --blue: #00b8d4;
+      --warning: #f59e0b;
+      --warning-soft: rgba(245, 158, 11, 0.10);
+      --danger: #e53e3e;
+      --danger-soft: rgba(229, 62, 62, 0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand svg { width: 40px; height: 40px; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand-text h2 { font-size: 16px; font-weight: 700; }
+    .brand-text .sub { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a {
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .nav a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav a.active {
+      background: var(--accent);
+      color: #0a0a0f;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .lede { color: var(--text-secondary); font-size: 15px; margin-bottom: 8px; }
+    .updated { color: var(--text-muted); font-size: 13px; margin-bottom: 32px; }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: var(--accent); }
+    p { margin: 0 0 14px; color: var(--text-primary); }
+    ul, ol { margin: 0 0 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; color: var(--text-primary); }
+    li strong { color: var(--accent); }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .highlight strong { color: var(--accent); }
+
+    .danger-box {
+      background: var(--danger-soft);
+      border-left: 4px solid var(--danger);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .danger-box strong { color: var(--danger); }
+
+    .warning-box {
+      background: var(--warning-soft);
+      border-left: 4px solid var(--warning);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .warning-box strong { color: var(--warning); }
+
+    .price-callout {
+      background: linear-gradient(135deg, var(--accent-soft), rgba(0, 184, 212, 0.10));
+      border: 1.5px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .price-callout .lifetime {
+      display: block;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .price-callout .amount {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -1px;
+      font-variant-numeric: tabular-nums;
+    }
+    .price-callout .strike {
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-size: 14px;
+      margin-left: 8px;
+      vertical-align: super;
+    }
+    .price-callout .terms-mini { color: var(--text-secondary); font-size: 13px; margin-top: 6px; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" fill="none">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00d68f" />
+            <stop offset="100%" stop-color="#00b8d4" />
+          </linearGradient>
+        </defs>
+        <path d="M 50 18 Q 50 8 32 8 Q 8 8 8 32 Q 8 56 32 56 Q 50 56 50 46"
+              stroke="url(#logoGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <text x="32" y="40" font-size="24" font-weight="800" text-anchor="middle" fill="url(#logoGrad)" font-family="-apple-system, sans-serif">$</text>
+        <rect x="54" y="36" width="3" height="12" rx="1" fill="url(#logoGrad)" opacity="0.45"/>
+        <rect x="58" y="30" width="3" height="18" rx="1" fill="url(#logoGrad)" opacity="0.7"/>
+      </svg>
+      <div class="brand-text">
+        <h2>Calc Impostos BR</h2>
+        <span class="sub">uPaiva</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="privacidade.html">Privacidade</a>
+      <a href="termos.html" class="active">Termos</a>
+    </nav>
+  </header>
+
+  <h1>Termos de Uso</h1>
+  <p class="lede">As regras pra usar a Calc Impostos BR uPaiva — versão Free e Premium.</p>
+  <p class="updated">Última atualização: 16 de maio de 2026 · Versão 1.0</p>
+
+  <div class="highlight">
+    <strong>Resumo de 1 minuto:</strong> a Calc Impostos é uma ferramenta de <strong>estimativa</strong>
+    de impostos pra freelancers. Não substitui um contador. O Premium custa
+    <strong>R$ 19,99 (lançamento)</strong> uma única vez, libera todas as features e funciona pra sempre
+    em até 2 dispositivos. Você pode pedir reembolso em 7 dias após a compra.
+  </div>
+
+  <div class="danger-box">
+    <strong>⚠️ Disclaimer fiscal:</strong> os cálculos da Calc Impostos BR são <strong>estimativas
+    baseadas em tabelas oficiais 2025</strong> (RFB, INSS, Resolução CGSN nº 140). Esta ferramenta
+    <strong>não substitui orientação de contador</strong> ou profissional especializado. Não nos
+    responsabilizamos por decisões tributárias, autuações, multas, retenções incorretas ou
+    qualquer perda financeira decorrente do uso isolado desta ferramenta. Para decisões
+    definitivas (escolha de regime, planejamento tributário, defesa em fiscalização, declaração
+    final), <strong>procure um contador</strong>.
+  </div>
+
+  <h2>1. Aceitação</h2>
+  <p>Ao instalar, abrir ou usar a extensão Calc Impostos BR uPaiva ("Extensão"), você concorda
+  com estes Termos e com a <a href="privacidade.html">Política de Privacidade</a>. Se não concorda,
+  não use a Extensão.</p>
+
+  <h2>2. O que a Extensão faz</h2>
+  <p>A Calc Impostos é uma calculadora pra freelancers brasileiros que estima:</p>
+  <ul>
+    <li>Líquido após impostos para os regimes <strong>MEI</strong>, <strong>Pessoa Física Autônoma</strong> e <strong>PJ Simples Nacional</strong> (Anexos III e V com Fator R)</li>
+    <li>O bruto necessário pra receber X líquido (cálculo reverso)</li>
+    <li>Comparação entre regimes com diferenças em R$</li>
+    <li>Próximo vencimento de DAS, GPS, Carnê-Leão, etc.</li>
+    <li>Lucro real de projetos quando informados custos extras (ferramentas, plataformas, terceiros)</li>
+  </ul>
+  <p>A Extensão usa tabelas oficiais 2025. Tabelas mudam anualmente — atualizações virão com
+  novas versões da Extensão.</p>
+
+  <h2>3. Versão Free vs Premium</h2>
+
+  <h3>3.1 Versão Free (gratuita, sem limite de tempo)</h3>
+  <ul>
+    <li>Cálculo MEI completo (todas as categorias)</li>
+    <li>Cálculo PF Autônomo completo (com ISS configurável)</li>
+    <li>Cálculo reverso (MEI/PF)</li>
+    <li>Histórico limitado (3 simulações salvas)</li>
+    <li>Copiar resumo como texto pra colar em WhatsApp/email</li>
+    <li>Custos extras (lucro real)</li>
+    <li>Onboarding e tela "Como usar"</li>
+  </ul>
+
+  <h3>3.2 Versão Premium (paga, vitalícia)</h3>
+  <p>Adiciona ao Free:</p>
+  <ul>
+    <li><strong>PJ Simples Nacional</strong> — Anexo III/V com Fator R automático e pró-labore</li>
+    <li><strong>Comparador entre regimes</strong> — MEI, PF e PJ lado a lado com gráfico de barras</li>
+    <li><strong>Histórico ilimitado</strong> com filtros por regime e mês</li>
+    <li><strong>Exportar PDF profissional</strong> com gráfico, branding e disclaimer</li>
+    <li><strong>Exportar CSV</strong> em formato relatório (com totalizadores)</li>
+    <li><strong>Alertas inteligentes avançados</strong> (projeção de teto MEI, sugestões de migração de regime)</li>
+  </ul>
+
+  <div class="price-callout">
+    <span class="lifetime">Oferta de lançamento</span>
+    <span class="amount">R$ 19,99 <span class="strike">R$ 39,99</span></span>
+    <p class="terms-mini">Pagamento único · acesso vitalício · até 2 dispositivos · sem mensalidade</p>
+  </div>
+
+  <h2>4. Como funciona o pagamento Premium</h2>
+  <ul>
+    <li><strong>Forma de pagamento:</strong> PIX, processado via Mercado Pago Brasil</li>
+    <li><strong>Confirmação:</strong> automática (até 5 minutos após o pagamento)</li>
+    <li><strong>Entrega:</strong> chave de licença enviada para o e-mail informado</li>
+    <li><strong>Vinculação:</strong> chave fica vinculada ao seu e-mail e funciona em até 2 dispositivos simultâneos</li>
+    <li><strong>Validade:</strong> vitalícia (até 100 anos a partir da compra)</li>
+  </ul>
+
+  <h2>5. Reembolso</h2>
+  <p>Por se tratar de produto digital de uso imediato, o reembolso pode ser solicitado
+  <strong>em até 7 (sete) dias corridos a partir da data da compra</strong>, conforme
+  Art. 49 do Código de Defesa do Consumidor (Lei 8.078/90).</p>
+  <p>Pra solicitar reembolso:</p>
+  <ol>
+    <li>Envie e-mail pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> com assunto "Reembolso"</li>
+    <li>Inclua o e-mail usado na compra</li>
+    <li>Reembolso é processado em até 7 dias úteis via PIX (mesmo método)</li>
+    <li>Após o reembolso, a chave de licença é revogada</li>
+  </ol>
+  <p>Após 7 dias da compra, não há reembolso (mas a licença continua válida vitaliciamente).</p>
+
+  <h2>6. Limite de dispositivos e troca</h2>
+  <p>Cada licença Premium ativa em até <strong>2 dispositivos simultâneos</strong>.</p>
+  <p>Se você precisar trocar pra um terceiro dispositivo (ex.: computador novo) e atingir o limite,
+  use o fluxo <em>"Recuperar por e-mail"</em> dentro da extensão. Você receberá um código
+  de 6 dígitos que reautoriza o dispositivo atual. Dispositivos antigos podem ser
+  desautorizados pelo nosso suporte mediante solicitação.</p>
+
+  <h2>7. Conduta proibida</h2>
+  <p>É expressamente proibido:</p>
+  <ul>
+    <li>Revender, sublicenciar ou redistribuir a chave Premium</li>
+    <li>Tentar fazer engenharia reversa, desofuscar ou extrair código-fonte com fins comerciais</li>
+    <li>Usar a Extensão para fins ilegais, fraudulentos ou que prejudiquem terceiros</li>
+    <li>Tentar burlar limites de dispositivos com múltiplas contas</li>
+    <li>Compartilhar chave com terceiros</li>
+  </ul>
+  <p>Violações resultam em <strong>revogação da licença sem reembolso</strong> e podem ser
+  reportadas às autoridades quando aplicável.</p>
+
+  <h2>8. Atualizações da Extensão</h2>
+  <p>A Extensão é atualizada periodicamente pra:</p>
+  <ul>
+    <li>Refletir mudanças nas tabelas tributárias (IRPF, INSS, MEI DAS, Simples Nacional)</li>
+    <li>Corrigir bugs e melhorar performance</li>
+    <li>Adicionar funcionalidades novas (algumas Free, outras só Premium)</li>
+  </ul>
+  <p>A Chrome Web Store distribui as atualizações automaticamente. Não há ação necessária da
+  sua parte. Sua licença Premium continua válida em todas as versões futuras.</p>
+
+  <h2>9. Disponibilidade do serviço</h2>
+  <p>O backend de licenciamento (necessário pra ativação inicial e recuperação) é hospedado na
+  Railway com banco Supabase. Nos esforçamos pra manter <strong>disponibilidade de 99% mensal</strong>,
+  mas não garantimos uptime absoluto. Se houver indisponibilidade prolongada (mais de 24h),
+  considere o seguinte:</p>
+  <ul>
+    <li>Os cálculos da Extensão funcionam <strong>100% offline</strong> mesmo sem o backend</li>
+    <li>Apenas a ativação Premium e a recuperação por e-mail dependem do backend</li>
+    <li>Se você já ativou em pelo menos 1 dispositivo, continua usando o Premium normalmente</li>
+  </ul>
+
+  <h2>10. Limitação de responsabilidade</h2>
+  <div class="warning-box">
+    <strong>Importante:</strong> A Extensão é fornecida "como está". A responsabilidade total
+    do uPaiva, em qualquer hipótese, é limitada ao valor pago pelo Premium nos últimos 12 meses
+    (que no plano vitalício significa o valor original da compra).
+  </div>
+  <p>Especificamente, <strong>não nos responsabilizamos por</strong>:</p>
+  <ul>
+    <li>Decisões tributárias tomadas com base nos cálculos da Extensão</li>
+    <li>Multas, autuações, retenções incorretas ou perdas financeiras decorrentes do uso</li>
+    <li>Mudanças em tabelas tributárias que ainda não foram refletidas em uma nova versão</li>
+    <li>Indisponibilidade temporária do backend (Railway, Supabase, Mercado Pago, Resend)</li>
+    <li>Problemas no Chrome ou no sistema operacional do usuário</li>
+    <li>Perda de dados locais (chrome.storage) — recomendamos exportar o histórico periodicamente</li>
+  </ul>
+
+  <h2>11. Propriedade intelectual</h2>
+  <p>O código, design, logo, conteúdo e nome "Calc Impostos BR uPaiva" são propriedade do uPaiva.
+  Você recebe uma licença pessoal, intransferível e revogável pra usar a Extensão conforme estes
+  Termos. Não há transferência de propriedade.</p>
+
+  <h2>12. Modificações destes Termos</h2>
+  <p>Podemos atualizar estes Termos a qualquer momento. Mudanças relevantes (preço, regras de
+  reembolso, limite de dispositivos) serão comunicadas com <strong>30 dias de antecedência</strong>
+  via e-mail (Premium) ou banner na Extensão (Free). Mudanças menores (correção de digitação,
+  esclarecimento) entram em vigor imediatamente.</p>
+  <p>O uso continuado após a notificação significa aceitação. Se você não concordar, pode pedir
+  reembolso (se ainda dentro de 7 dias da compra) ou parar de usar.</p>
+
+  <h2>13. Lei aplicável e foro</h2>
+  <p>Estes Termos são regidos pelas leis da <strong>República Federativa do Brasil</strong>.</p>
+  <p>Para questões de consumo (Premium), o foro competente é o do <strong>domicílio do consumidor</strong>
+  (Art. 101, I, CDC). Para outras questões, o foro da Comarca de São José dos Campos/SP.</p>
+
+  <h2>14. Contato</h2>
+  <p>Suporte e atendimento: <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a></p>
+  <p>Tempo médio de resposta: <strong>1 a 2 dias úteis</strong>.</p>
+
+  <footer>
+    <p>Calc Impostos BR uPaiva · <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a></p>
+    <p>Não somos afiliados à Receita Federal, INSS, Mercado Pago ou Google.</p>
+  </footer>
+
+</div>
+</body>
+</html>

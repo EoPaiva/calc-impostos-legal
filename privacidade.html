@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Política de Privacidade da Calc Impostos BR uPaiva — extensão Chrome de cálculo de impostos para freelancer brasileiro." />
+  <title>Política de Privacidade — Calc Impostos BR uPaiva</title>
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-card: #161b22;
+      --bg-hover: #1c2128;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent: #00d68f;
+      --accent-soft: rgba(0, 214, 143, 0.12);
+      --blue: #00b8d4;
+      --warning: #f59e0b;
+      --warning-soft: rgba(245, 158, 11, 0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Header com logo */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand svg { width: 40px; height: 40px; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand-text h2 { font-size: 16px; font-weight: 700; }
+    .brand-text .sub { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .nav a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav a.active {
+      background: var(--accent);
+      color: #0a0a0f;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Título principal */
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .lede {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .updated {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+
+    /* Seções */
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+      color: var(--accent);
+    }
+    p { margin: 0 0 14px; color: var(--text-primary); }
+    ul, ol { margin: 0 0 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; color: var(--text-primary); }
+    li strong { color: var(--accent); }
+
+    /* Caixas destacadas */
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .highlight strong { color: var(--accent); }
+
+    .warning-box {
+      background: var(--warning-soft);
+      border-left: 4px solid var(--warning);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .warning-box strong { color: var(--warning); }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 24px;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: var(--bg-card);
+    }
+    td:first-child { font-weight: 600; color: var(--text-primary); width: 32%; }
+    td { color: var(--text-secondary); }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" fill="none">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00d68f" />
+            <stop offset="100%" stop-color="#00b8d4" />
+          </linearGradient>
+        </defs>
+        <path d="M 50 18 Q 50 8 32 8 Q 8 8 8 32 Q 8 56 32 56 Q 50 56 50 46"
+              stroke="url(#logoGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <text x="32" y="40" font-size="24" font-weight="800" text-anchor="middle" fill="url(#logoGrad)" font-family="-apple-system, sans-serif">$</text>
+        <rect x="54" y="36" width="3" height="12" rx="1" fill="url(#logoGrad)" opacity="0.45"/>
+        <rect x="58" y="30" width="3" height="18" rx="1" fill="url(#logoGrad)" opacity="0.7"/>
+      </svg>
+      <div class="brand-text">
+        <h2>Calc Impostos BR</h2>
+        <span class="sub">uPaiva</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="privacidade.html" class="active">Privacidade</a>
+      <a href="termos.html">Termos</a>
+    </nav>
+  </header>
+
+  <h1>Política de Privacidade</h1>
+  <p class="lede">Como a Calc Impostos BR uPaiva trata seus dados — em linguagem direta, sem letras miúdas.</p>
+  <p class="updated">Última atualização: 16 de maio de 2026 · Versão 1.0</p>
+
+  <div class="highlight">
+    <strong>Resumo de 1 minuto:</strong> os cálculos de impostos acontecem 100% no seu navegador.
+    Valores que você digita (bruto, regime, custos, projeto, cliente) <strong>nunca saem do seu computador</strong>.
+    Só coletamos seu e-mail e identificador de dispositivo se você comprar o Premium — e usamos
+    isso apenas pra entregar a chave de licença e impedir abuso. Sem rastreio, sem anúncios,
+    sem revenda de dados.
+  </div>
+
+  <h2>1. Quem somos</h2>
+  <p>A <strong>Calc Impostos BR uPaiva</strong> é uma extensão Chrome operada por <strong>uPaiva</strong>
+  (projeto pessoal de Mateus Paiva, contato <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a>).
+  Esta política se aplica exclusivamente a esta extensão. Outros produtos uPaiva têm políticas
+  próprias.</p>
+
+  <h2>2. Que dados coletamos</h2>
+
+  <h3>2.1 Dados que ficam SOMENTE no seu navegador</h3>
+  <p>Esses dados <strong>nunca são enviados para nenhum servidor</strong>. Ficam salvos no
+  <code>chrome.storage.local</code> da sua instalação e podem ser apagados a qualquer momento
+  pela aba <em>Config → Limpar todos os dados</em>:</p>
+  <ul>
+    <li><strong>Histórico de simulações:</strong> regime, bruto, líquido, carga tributária, custos extras informados, mês</li>
+    <li><strong>Metadados opcionais:</strong> projeto, cliente, observação (se você preencher na seção "Resumo pra proposta")</li>
+    <li><strong>Sessão atual:</strong> último valor digitado, regime selecionado, modo (bruto/líquido), abas e seções abertas</li>
+    <li><strong>Configurações:</strong> alíquota de ISS escolhida, faturamento anual MEI, RBT12 e folha PJ, etc.</li>
+  </ul>
+  <p>Nada disso é transmitido pra fora do seu navegador. Nem pra nós, nem pra terceiros.</p>
+
+  <h3>2.2 Dados coletados se você compra o Premium</h3>
+  <p>Apenas se você decide adquirir o Premium, processamos:</p>
+  <table>
+    <thead>
+      <tr><th>Dado</th><th>Pra que serve</th><th>Onde fica armazenado</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>E-mail</td>
+        <td>Enviar a chave de licença, código de recuperação e avisos de expiração</td>
+        <td>Supabase (banco do backend) + Resend (envio de email)</td>
+      </tr>
+      <tr>
+        <td>ID de dispositivo (UUID gerado localmente)</td>
+        <td>Limitar uso a 2 dispositivos por licença</td>
+        <td>Hash no Supabase (não armazenamos o ID em texto puro)</td>
+      </tr>
+      <tr>
+        <td>Token de dispositivo</td>
+        <td>Autenticar requisições sem precisar reativar key a cada uso</td>
+        <td>Hash no Supabase</td>
+      </tr>
+      <tr>
+        <td>Status do pagamento (PIX)</td>
+        <td>Processar pagamento e liberar a licença</td>
+        <td>Mercado Pago (intermediário) + Supabase (registro do pedido)</td>
+      </tr>
+      <tr>
+        <td>Plataforma e nome do dispositivo</td>
+        <td>Identificar dispositivos no painel de licença (você reconhece "Chrome no Windows")</td>
+        <td>Supabase</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.3 O que NÃO coletamos</h3>
+  <ul>
+    <li>Nada relacionado aos seus cálculos (bruto, regime, custos, projetos, clientes)</li>
+    <li>Histórico de navegação ou abas abertas</li>
+    <li>Localização geográfica</li>
+    <li>Cookies de rastreio</li>
+    <li>Identificadores cross-site (Google Analytics, Facebook Pixel, etc.)</li>
+    <li>Conteúdo de páginas que você visita</li>
+  </ul>
+
+  <h2>3. Como usamos seus dados</h2>
+  <ul>
+    <li><strong>Cálculos:</strong> processados localmente. Nada é transmitido.</li>
+    <li><strong>Premium:</strong> entregar a chave de licença, autenticar dispositivos, recuperar acesso por código de e-mail (limite de 2 dispositivos), avisar quando a licença expirar.</li>
+    <li><strong>Suporte:</strong> se você nos enviar e-mail, usamos seu e-mail somente pra responder.</li>
+  </ul>
+  <p>Não vendemos, alugamos ou compartilhamos seus dados pra fins de marketing de terceiros.</p>
+
+  <h2>4. Quem tem acesso aos dados de Premium</h2>
+  <ul>
+    <li><strong>uPaiva (nós):</strong> backend hospedado na Railway com banco Supabase (PostgreSQL)</li>
+    <li><strong>Mercado Pago:</strong> processamento do PIX (sujeito à <a href="https://www.mercadopago.com.br/privacidade" target="_blank" rel="noopener">política de privacidade do MP</a>)</li>
+    <li><strong>Resend:</strong> envio dos e-mails transacionais (chave de licença, recuperação) — sujeito à <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">política do Resend</a></li>
+  </ul>
+  <p>Não há terceiros adicionais. Nossas APIs internas usam comunicação criptografada (HTTPS) e
+  chaves de serviço (service_role) restritas.</p>
+
+  <h2>5. Base legal (LGPD)</h2>
+  <p>Tratamos seus dados com base em:</p>
+  <ul>
+    <li><strong>Execução de contrato</strong> (Art. 7º, V, LGPD) — pra entregar a licença Premium que você comprou</li>
+    <li><strong>Consentimento</strong> (Art. 7º, I) — pra envio de e-mails relacionados à conta</li>
+    <li><strong>Legítimo interesse</strong> (Art. 7º, IX) — pra prevenção de fraude (limite de 2 dispositivos por licença, hash de IDs)</li>
+  </ul>
+
+  <h2>6. Seus direitos como titular (LGPD Art. 18)</h2>
+  <p>Você pode, a qualquer momento, solicitar:</p>
+  <ul>
+    <li><strong>Acesso</strong> aos dados que temos sobre você</li>
+    <li><strong>Correção</strong> de dados incompletos, inexatos ou desatualizados</li>
+    <li><strong>Anonimização, bloqueio ou eliminação</strong> de dados desnecessários</li>
+    <li><strong>Portabilidade</strong> dos seus dados</li>
+    <li><strong>Eliminação</strong> dos dados tratados com seu consentimento</li>
+    <li><strong>Informação</strong> sobre com quem compartilhamos</li>
+    <li><strong>Revogação do consentimento</strong></li>
+  </ul>
+  <p>Pra exercer qualquer um desses direitos, envie e-mail pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a>
+  com o assunto <em>"LGPD — Solicitação"</em>. Respondemos em até 15 dias.</p>
+
+  <div class="warning-box">
+    <strong>Atenção:</strong> excluir sua conta apaga sua licença Premium permanentemente.
+    Não há reembolso por solicitação de exclusão (você optou por sair).
+  </div>
+
+  <h2>7. Retenção dos dados</h2>
+  <ul>
+    <li><strong>Dados de licença ativa:</strong> mantidos enquanto a licença estiver válida (no caso do plano vitalício, 100 anos a partir da compra)</li>
+    <li><strong>Dados de pagamento:</strong> mantidos por 5 anos (obrigação fiscal e antifraude do Mercado Pago)</li>
+    <li><strong>E-mails enviados:</strong> Resend mantém logs de entrega por 30 dias</li>
+    <li><strong>Dados locais (chrome.storage):</strong> ficam até você desinstalar a extensão ou limpar via Config</li>
+  </ul>
+
+  <h2>8. Cookies e tecnologias similares</h2>
+  <p>Esta extensão <strong>não usa cookies</strong>. Usamos apenas:</p>
+  <ul>
+    <li><code>chrome.storage.local</code> — armazenamento local da extensão (não é cookie, não atravessa origem)</li>
+    <li>UUIDs gerados localmente — pra identificar o dispositivo, com hash antes de enviar ao backend</li>
+  </ul>
+
+  <h2>9. Crianças e adolescentes</h2>
+  <p>A Calc Impostos é destinada a freelancers e profissionais autônomos maiores de 18 anos.
+  Não coletamos intencionalmente dados de menores. Se você é responsável por um menor que
+  usou a extensão e quer que os dados sejam apagados, escreva pra
+  <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a>.</p>
+
+  <h2>10. Mudanças nesta política</h2>
+  <p>Quando alterarmos esta política, notificaremos por e-mail (se você for usuário Premium)
+  ou via banner na extensão (todos). A nova versão entra em vigor 30 dias após a notificação.
+  Você sempre pode ver a versão atual e a data da última atualização aqui.</p>
+
+  <h2>11. Contato</h2>
+  <p>Encarregado pelo Tratamento de Dados Pessoais (DPO):
+  <strong>Mateus Paiva</strong> · <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a></p>
+  <p>Resposta em até <strong>15 dias úteis</strong> pra solicitações LGPD.</p>
+
+  <footer>
+    <p>Calc Impostos BR uPaiva · <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a></p>
+    <p>Não somos afiliados à Receita Federal, INSS, Mercado Pago ou Google.</p>
+  </footer>
+
+</div>
+</body>
+</html>
