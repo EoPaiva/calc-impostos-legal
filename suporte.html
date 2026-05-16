@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Suporte da Calc Impostos BR uPaiva — canais de contato, FAQ e solução de problemas." />
+  <title>Suporte — Calc Impostos BR uPaiva</title>
+  <style>
+    :root {
+      --bg-base: #0d1117;
+      --bg-card: #161b22;
+      --bg-hover: #1c2128;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent: #00d68f;
+      --accent-soft: rgba(0, 214, 143, 0.12);
+      --blue: #00b8d4;
+      --warning: #f59e0b;
+      --warning-soft: rgba(245, 158, 11, 0.10);
+      --whatsapp: #25d366;
+      --whatsapp-soft: rgba(37, 211, 102, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand svg { width: 40px; height: 40px; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand-text h2 { font-size: 16px; font-weight: 700; }
+    .brand-text .sub { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a {
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .nav a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav a.active {
+      background: var(--accent);
+      color: #0a0a0f;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Título */
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .lede {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .updated {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+      color: var(--accent);
+    }
+    p { margin: 0 0 14px; color: var(--text-primary); }
+    ul, ol { margin: 0 0 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; color: var(--text-primary); }
+    li strong { color: var(--accent); }
+
+    /* Card de contato principal */
+    .contact-primary {
+      background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(0, 184, 212, 0.10) 100%);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0 32px;
+      text-align: center;
+    }
+    .contact-primary .label {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .contact-primary .email {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .contact-primary .email a { color: var(--text-primary); }
+    .contact-primary .email a:hover { color: var(--accent); text-decoration: none; }
+    .contact-primary .meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .contact-primary .meta span strong { color: var(--accent); }
+
+    /* FAQ */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .faq-item .q {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .faq-item .a {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .faq-item .a a { color: var(--accent); }
+    .faq-item .a code {
+      background: var(--bg-hover);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--accent);
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+    }
+
+    /* Recursos */
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+    .resource-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.15s;
+    }
+    .resource-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-hover);
+    }
+    .resource-card .title {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .resource-card .desc {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .resource-card a { color: var(--text-primary); }
+    .resource-card a:hover { text-decoration: none; }
+
+    /* Caixa de alternativa (WhatsApp — discreta) */
+    .alternative {
+      margin-top: 56px;
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .alternative .alt-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .alternative .alt-header .icon {
+      width: 18px;
+      height: 18px;
+      color: var(--whatsapp);
+    }
+    .alternative .alt-header strong {
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .alternative p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .alternative .wa-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--whatsapp-soft);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 6px;
+      color: var(--whatsapp);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Cascadia Code', 'Consolas', monospace;
+    }
+    .alternative .wa-link:hover {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: var(--whatsapp);
+      text-decoration: none;
+    }
+
+    /* Highlight (warning style) */
+    .warning-box {
+      background: var(--warning-soft);
+      border-left: 4px solid var(--warning);
+      padding: 14px 18px;
+      margin: 16px 0 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .warning-box strong { color: var(--warning); }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: var(--accent); }
+    footer p { color: var(--text-muted); margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" fill="none">
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00d68f" />
+            <stop offset="100%" stop-color="#00b8d4" />
+          </linearGradient>
+        </defs>
+        <path d="M 50 18 Q 50 8 32 8 Q 8 8 8 32 Q 8 56 32 56 Q 50 56 50 46"
+              stroke="url(#logoGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <text x="32" y="40" font-size="24" font-weight="800" text-anchor="middle" fill="url(#logoGrad)" font-family="-apple-system, sans-serif">$</text>
+        <rect x="54" y="36" width="3" height="12" rx="1" fill="url(#logoGrad)" opacity="0.45"/>
+        <rect x="58" y="30" width="3" height="18" rx="1" fill="url(#logoGrad)" opacity="0.7"/>
+      </svg>
+      <div class="brand-text">
+        <h2>Calc Impostos BR</h2>
+        <span class="sub">uPaiva</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="suporte.html" class="active">Suporte</a>
+      <a href="privacidade.html">Privacidade</a>
+      <a href="termos.html">Termos</a>
+    </nav>
+  </header>
+
+  <h1>Suporte</h1>
+  <p class="lede">Tudo que você precisa pra resolver problemas com a Calc Impostos BR — direto e sem enrolação.</p>
+  <p class="updated">Última atualização: 16 de maio de 2026</p>
+
+  <div class="contact-primary">
+    <div class="label">📧 Canal oficial de atendimento</div>
+    <div class="email"><a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a></div>
+    <div class="meta">
+      <span><strong>Resposta:</strong> 1–2 dias úteis</span>
+      <span><strong>Horário:</strong> seg–sex, 9h–18h (BRT)</span>
+      <span><strong>Idioma:</strong> português</span>
+    </div>
+  </div>
+
+  <h2>Antes de mandar e-mail — perguntas frequentes</h2>
+  <p>A maioria dos problemas se resolve em 30 segundos lendo o tópico certo aqui em baixo.</p>
+
+  <h3>Premium e licença</h3>
+
+  <div class="faq-item">
+    <div class="q">Comprei o Premium mas não recebi a chave por e-mail.</div>
+    <div class="a">
+      Verifique a caixa de <strong>spam/lixo eletrônico</strong> — o domínio <code>upaiva.dev</code> ainda
+      está aquecendo a reputação e às vezes cai lá. Se em 1 hora nada chegar, escreva pra
+      <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> com o ID da ordem PIX
+      e mandamos a chave manualmente.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="q">A chave Premium não ativa — diz "chave inválida" ou "expirada".</div>
+    <div class="a">
+      Confira se digitou exatamente o e-mail usado na compra (sem espaços, em minúsculas)
+      e a chave no formato <code>CALCIMP-LIFE-XXXXXX-XXXXXX-XXXXXX</code>. Se persistir,
+      mande pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> o e-mail
+      cadastrado e a chave que está tentando usar — verificamos no banco em minutos.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="q">Troquei de computador — como uso o Premium no novo?</div>
+    <div class="a">
+      O Premium funciona em até <strong>2 dispositivos simultâneos</strong>. Na nova instalação,
+      use "Já tenho uma key" e cole o mesmo e-mail + chave. Se já estiver em 2 dispositivos,
+      faça logout em um pelo menu Config → "Desconectar este dispositivo".
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="q">Quero reembolso da compra Premium.</div>
+    <div class="a">
+      Você tem <strong>7 dias corridos</strong> a partir da data da compra pra solicitar reembolso
+      integral, sem necessidade de justificativa (CDC Art. 49). Escreva pra
+      <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> com o e-mail da compra
+      e o número da ordem PIX. Reembolso volta pelo mesmo método em até 5 dias úteis.
+      Detalhes completos nos <a href="termos.html">Termos de Uso</a>.
+    </div>
+  </div>
+
+  <h3>Cálculos e funcionalidades</h3>
+
+  <div class="faq-item">
+    <div class="q">O valor do imposto MEI/PF/PJ está diferente do que esperava.</div>
+    <div class="a">
+      Nossos cálculos seguem as tabelas oficiais de <strong>2025</strong> (RFB, INSS, Resolução CGSN nº 140).
+      Diferenças geralmente vêm de: ISS municipal não configurado, custos extras não somados,
+      Fator R do Simples (Anexo III vs V), ou alíquotas adicionais que dependem da sua categoria CNAE.
+      Confira esses pontos primeiro. Se ainda achar que está errado, mande um print da tela
+      pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> e investigamos.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="q">A extensão não abre / popup fica em branco / dá erro.</div>
+    <div class="a">
+      Tente: <strong>(1)</strong> fechar e reabrir o Chrome; <strong>(2)</strong> ir em
+      <code>chrome://extensions/</code>, desativar a Calc Impostos, ativar de novo;
+      <strong>(3)</strong> reinstalar a extensão (suas configurações ficam salvas no Chrome).
+      Se nada disso resolver, mande pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a>
+      a versão do Chrome (<code>chrome://version</code>) e qual erro aparece no console.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="q">Perdi meu histórico de simulações.</div>
+    <div class="a">
+      O histórico fica em <code>chrome.storage.local</code> — se você reinstalou a extensão,
+      limpou os dados do Chrome ou trocou de perfil, ele se vai. Não temos backup remoto
+      (pra preservar sua privacidade — os dados nunca saem do seu computador).
+      Recomendamos exportar CSV/PDF periodicamente como backup.
+    </div>
+  </div>
+
+  <h3>Privacidade e dados</h3>
+
+  <div class="faq-item">
+    <div class="q">Quero exercer meus direitos LGPD (acessar, corrigir, apagar meus dados).</div>
+    <div class="a">
+      Mande pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> informando
+      qual direito quer exercer e o e-mail cadastrado. Resposta em até 15 dias úteis
+      conforme LGPD Art. 19. Detalhes na <a href="privacidade.html">Política de Privacidade</a>.
+    </div>
+  </div>
+
+  <h2>Recursos úteis</h2>
+
+  <div class="resources">
+    <div class="resource-card">
+      <a href="privacidade.html">
+        <div class="title">🔒 Política de Privacidade</div>
+        <div class="desc">Como tratamos seus dados (LGPD).</div>
+      </a>
+    </div>
+    <div class="resource-card">
+      <a href="termos.html">
+        <div class="title">📜 Termos de Uso</div>
+        <div class="desc">Regras, Premium, reembolso, disclaimer.</div>
+      </a>
+    </div>
+    <div class="resource-card">
+      <a href="https://upaiva.dev" target="_blank" rel="noopener">
+        <div class="title">🌐 upaiva.dev</div>
+        <div class="desc">Site e outros projetos da uPaiva.</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠️ Importante:</strong> A Calc Impostos BR é uma ferramenta de
+    <strong>estimativa</strong> baseada em tabelas oficiais 2025.
+    <strong>Não substitui orientação de contador.</strong> Para decisões definitivas
+    (escolha de regime, planejamento tributário, defesa em fiscalização, declaração anual),
+    procure um profissional especializado. Nosso suporte responde sobre o funcionamento
+    da ferramenta — não prestamos consultoria fiscal.
+  </div>
+
+  <div class="alternative">
+    <div class="alt-header">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <strong>Canal alternativo (urgências)</strong>
+    </div>
+    <p>
+      Para problemas <strong>realmente urgentes</strong> que não podem esperar 1–2 dias úteis
+      (ex: pagamento Premium feito mas chave não chegou após 24h). Para qualquer outra coisa,
+      use o e-mail acima — o tempo de resposta é melhor e o atendimento é organizado em fila.
+    </p>
+    <a href="https://wa.me/5535988042182?text=Ol%C3%A1%2C%20preciso%20de%20suporte%20com%20a%20Calc%20Impostos%20BR%20uPaiva." class="wa-link" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      +55 (35) 98804-2182
+    </a>
+  </div>
+
+  <footer>
+    <p>Calc Impostos BR uPaiva · <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a></p>
+    <p>Não somos afiliados à Receita Federal, INSS, Mercado Pago ou Google.</p>
+  </footer>
+
+</div>
+</body>
+</html>
