@@ -1,374 +1,272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Termos de Uso da Calc Impostos BR uPaiva — extensão Chrome de cálculo de impostos para freelancer brasileiro." />
-  <title>Termos de Uso — Calc Impostos BR uPaiva</title>
-  <style>
-    :root {
-      --bg-base: #0d1117;
-      --bg-card: #161b22;
-      --border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-      --accent: #00d68f;
-      --accent-soft: rgba(0, 214, 143, 0.12);
-      --blue: #00b8d4;
-      --warning: #f59e0b;
-      --warning-soft: rgba(245, 158, 11, 0.10);
-      --danger: #e53e3e;
-      --danger-soft: rgba(229, 62, 62, 0.10);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      background: var(--bg-base);
-      color: var(--text-primary);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .page { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 32px;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand svg { width: 40px; height: 40px; }
-    .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .brand-text h2 { font-size: 16px; font-weight: 700; }
-    .brand-text .sub { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav a {
-      padding: 8px 14px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: all 0.15s;
-    }
-    .nav a:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .nav a.active {
-      background: var(--accent);
-      color: #0a0a0f;
-      border-color: var(--accent);
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-    .lede { color: var(--text-secondary); font-size: 15px; margin-bottom: 8px; }
-    .updated { color: var(--text-muted); font-size: 13px; margin-bottom: 32px; }
-
-    h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 40px 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px dashed var(--border);
-      color: var(--text-primary);
-      letter-spacing: -0.3px;
-    }
-    h3 { font-size: 16px; font-weight: 700; margin: 24px 0 8px; color: var(--accent); }
-    p { margin: 0 0 14px; color: var(--text-primary); }
-    ul, ol { margin: 0 0 16px; padding-left: 24px; }
-    li { margin-bottom: 6px; color: var(--text-primary); }
-    li strong { color: var(--accent); }
-
-    .highlight {
-      background: var(--accent-soft);
-      border-left: 4px solid var(--accent);
-      padding: 14px 18px;
-      margin: 16px 0 24px;
-      border-radius: 0 6px 6px 0;
-    }
-    .highlight strong { color: var(--accent); }
-
-    .danger-box {
-      background: var(--danger-soft);
-      border-left: 4px solid var(--danger);
-      padding: 14px 18px;
-      margin: 16px 0 24px;
-      border-radius: 0 6px 6px 0;
-    }
-    .danger-box strong { color: var(--danger); }
-
-    .warning-box {
-      background: var(--warning-soft);
-      border-left: 4px solid var(--warning);
-      padding: 14px 18px;
-      margin: 16px 0 24px;
-      border-radius: 0 6px 6px 0;
-    }
-    .warning-box strong { color: var(--warning); }
-
-    .price-callout {
-      background: linear-gradient(135deg, var(--accent-soft), rgba(0, 184, 212, 0.10));
-      border: 1.5px solid var(--accent);
-      border-radius: 10px;
-      padding: 20px 24px;
-      margin: 24px 0;
-      text-align: center;
-    }
-    .price-callout .lifetime {
-      display: block;
-      font-size: 11px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .price-callout .amount {
-      display: block;
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: -1px;
-      font-variant-numeric: tabular-nums;
-    }
-    .price-callout .strike {
-      color: var(--text-muted);
-      text-decoration: line-through;
-      font-size: 14px;
-      margin-left: 8px;
-      vertical-align: super;
-    }
-    .price-callout .terms-mini { color: var(--text-secondary); font-size: 13px; margin-top: 6px; }
-
-    footer {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 13px;
-      text-align: center;
-    }
-    footer a { color: var(--accent); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Termos de Uso da extensão InstaGrowth IA uPaiva — condições, restrições, garantias e direito de arrependimento.">
+<meta name="robots" content="index, follow">
+<title>Termos de Uso — InstaGrowth IA uPaiva</title>
+<link rel="canonical" href="">
+<style>
+  :root {
+    --bg-base: #080A12;
+    --bg-surface: #0D1020;
+    --bg-card: #12172A;
+    --bg-elevated: #171D33;
+    --border-subtle: #252B45;
+    --color-blue: #3B82F6;
+    --color-purple: #8B5CF6;
+    --color-green: #22C55E;
+    --color-warning: #FACC15;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 45%, #22C55E 100%);
+    --glow-purple: 0 0 24px rgba(139, 92, 246, 0.35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.65;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 12px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+  .meta {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 40px 0 12px;
+    color: var(--text-primary);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  h3 {
+    font-size: 16px;
+    margin: 24px 0 8px;
+    color: var(--color-blue);
+  }
+  p { margin: 12px 0; color: var(--text-secondary); }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; color: var(--text-secondary); }
+  strong { color: var(--text-primary); font-weight: 600; }
+  a { color: var(--color-purple); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-family: "JetBrains Mono", "SF Mono", Consolas, monospace;
+    color: var(--text-primary);
+  }
+  .callout {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(6, 182, 212, 0.08));
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: var(--glow-purple);
+  }
+  .callout h3 { margin-top: 0; color: var(--color-purple); }
+  .warning {
+    background: linear-gradient(135deg, rgba(250, 204, 21, 0.10), rgba(239, 68, 68, 0.08));
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .warning h3 { margin-top: 0; color: var(--color-warning); }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  .nav-links {
+    text-align: center;
+    margin-top: 12px;
+  }
+  .nav-links a {
+    margin: 0 12px;
+    font-size: 13px;
+  }
+</style>
 </head>
 <body>
-<div class="page">
+<div class="container">
 
-  <header class="header">
-    <div class="brand">
-      <svg viewBox="0 0 64 64" fill="none">
-        <defs>
-          <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#00d68f" />
-            <stop offset="100%" stop-color="#00b8d4" />
-          </linearGradient>
-        </defs>
-        <path d="M 50 18 Q 50 8 32 8 Q 8 8 8 32 Q 8 56 32 56 Q 50 56 50 46"
-              stroke="url(#logoGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <text x="32" y="40" font-size="24" font-weight="800" text-anchor="middle" fill="url(#logoGrad)" font-family="-apple-system, sans-serif">$</text>
-        <rect x="54" y="36" width="3" height="12" rx="1" fill="url(#logoGrad)" opacity="0.45"/>
-        <rect x="58" y="30" width="3" height="18" rx="1" fill="url(#logoGrad)" opacity="0.7"/>
-      </svg>
-      <div class="brand-text">
-        <h2>Calc Impostos BR</h2>
-        <span class="sub">uPaiva</span>
-      </div>
-    </div>
-    <nav class="nav">
-      <a href="suporte.html">Suporte</a>
-      <a href="privacidade.html">Privacidade</a>
-      <a href="termos.html" class="active">Termos</a>
-    </nav>
+  <header>
+    <span class="badge">InstaGrowth IA uPaiva</span>
+    <h1>Termos de Uso</h1>
+    <p class="meta">Última atualização: <strong>18 de maio de 2026</strong> · Versão 1.0.0</p>
   </header>
 
-  <h1>Termos de Uso</h1>
-  <p class="lede">As regras pra usar a Calc Impostos BR uPaiva — versão Free e Premium.</p>
-  <p class="updated">Última atualização: 16 de maio de 2026 · Versão 1.0</p>
-
-  <div class="highlight">
-    <strong>Resumo de 1 minuto:</strong> a Calc Impostos é uma ferramenta de <strong>estimativa</strong>
-    de impostos pra freelancers. Não substitui um contador. O Premium custa
-    <strong>R$ 19,99 (lançamento)</strong> uma única vez, libera todas as features e funciona pra sempre
-    em até 2 dispositivos. Você pode pedir reembolso em 7 dias após a compra.
+  <div class="callout">
+    <h3>Resumo em 30 segundos</h3>
+    <ul>
+      <li>Você usa a extensão por sua conta e risco — não somos afiliados ao Instagram.</li>
+      <li>Premium é compra única (sem renovação automática).</li>
+      <li>Você tem 7 dias de arrependimento (CDC Art. 49) a partir da compra.</li>
+      <li>Não use a extensão pra spam, assédio ou atividades ilegais.</li>
+      <li>O modo "Auto Pleno" exige aceite de termo específico antes de ser liberado.</li>
+    </ul>
   </div>
 
-  <div class="danger-box">
-    <strong>⚠️ Disclaimer fiscal:</strong> os cálculos da Calc Impostos BR são <strong>estimativas
-    baseadas em tabelas oficiais 2025</strong> (RFB, INSS, Resolução CGSN nº 140). Esta ferramenta
-    <strong>não substitui orientação de contador</strong> ou profissional especializado. Não nos
-    responsabilizamos por decisões tributárias, autuações, multas, retenções incorretas ou
-    qualquer perda financeira decorrente do uso isolado desta ferramenta. Para decisões
-    definitivas (escolha de regime, planejamento tributário, defesa em fiscalização, declaração
-    final), <strong>procure um contador</strong>.
+  <h2>1. Sobre estes termos</h2>
+  <p>Estes Termos de Uso ("Termos") regem o uso da extensão de navegador <strong>InstaGrowth IA uPaiva</strong> ("Extensão", "Serviço") fornecida pela <strong>uPaiva</strong>. Ao instalar, ativar ou usar a Extensão, você concorda integralmente com estes Termos. Se discordar de qualquer cláusula, não use a Extensão.</p>
+
+  <h2>2. Sobre a Extensão</h2>
+  <p>A InstaGrowth IA uPaiva é uma extensão para navegadores baseados em Chromium que oferece ferramentas de produtividade para usuários do Instagram, incluindo:</p>
+  <ul>
+    <li>Descoberta contextual de perfis públicos</li>
+    <li>Organização de oportunidades de crescimento</li>
+    <li>Integração opcional com provedores de IA (Anthropic, OpenAI, Google) via chave fornecida pelo próprio usuário (BYOK)</li>
+    <li>Recursos de automação assistida (apenas na versão completa, fora do Chrome Web Store)</li>
+  </ul>
+
+  <h2>3. Licença de uso</h2>
+  <p>A uPaiva concede a você uma licença <strong>não-exclusiva, intransferível, revogável e limitada</strong> para instalar e usar a Extensão em dispositivos pessoais ou profissionais sob seu controle, conforme estes Termos.</p>
+  <p>Esta licença <strong>não transfere propriedade intelectual</strong>. Todo o código, design, marca e conteúdo permanecem de propriedade da uPaiva e/ou de seus titulares.</p>
+
+  <h2>4. Restrições de uso</h2>
+  <p>Você concorda em <strong>NÃO</strong>:</p>
+  <ul>
+    <li>Usar a Extensão para spam, assédio, perseguição (stalking) ou qualquer prática ilegal</li>
+    <li>Vender, sublicenciar, distribuir, modificar ou criar trabalhos derivados da Extensão sem autorização</li>
+    <li>Tentar burlar mecanismos de licenciamento, autenticação ou proteção</li>
+    <li>Usar a Extensão para violar direitos de terceiros ou dados pessoais protegidos pela LGPD</li>
+    <li>Realizar engenharia reversa do código compilado além do permitido em lei</li>
+    <li>Compartilhar sua license key com terceiros</li>
+  </ul>
+
+  <h2>5. Conta Premium e pagamentos</h2>
+
+  <h3>5.1 Planos disponíveis</h3>
+  <p>A Extensão oferece planos pagos com features ampliadas:</p>
+  <ul>
+    <li><strong>Semanal</strong> — 7 dias de acesso Premium</li>
+    <li><strong>Mensal</strong> — 30 dias de acesso Premium</li>
+    <li><strong>Vitalício</strong> — acesso Premium permanente neste dispositivo</li>
+  </ul>
+
+  <h3>5.2 Compra única, sem recorrência</h3>
+  <p>Todos os planos são <strong>compra única</strong>. Não há renovação automática. Ao fim do período (no caso do Semanal e Mensal), o acesso Premium expira e você volta ao plano Free. Para continuar, é necessário comprar novamente.</p>
+
+  <h3>5.3 Forma de pagamento</h3>
+  <p>O pagamento é processado via <strong>PIX</strong> através do Mercado Pago. Após confirmação do pagamento, sua license key é gerada e entregue por e-mail.</p>
+
+  <h3>5.4 Ativação por dispositivo</h3>
+  <p>Cada license key ativa o Premium no dispositivo onde for primeiramente ativada (vinculada por device ID). Você pode recuperar acesso em outro dispositivo usando o e-mail e o código de 6 dígitos enviado pela uPaiva.</p>
+
+  <h2>6. Direito de arrependimento (CDC Art. 49)</h2>
+  <div class="callout">
+    <h3>7 dias de arrependimento</h3>
+    <p>Conforme o <strong>Código de Defesa do Consumidor (Lei 8.078/90), Art. 49</strong>, você tem o direito de desistir da compra em até <strong>7 dias corridos</strong> a partir da data de pagamento, sem necessidade de justificativa, e receber o reembolso integral.</p>
+    <p>Para solicitar: envie e-mail para <strong>suporte@upaiva.dev</strong> com o assunto "Arrependimento" informando o e-mail da compra e a license key. O reembolso é processado em até 7 dias úteis pela mesma forma de pagamento (PIX).</p>
+  </div>
+  <p>Após o prazo de 7 dias, não há garantia de reembolso, exceto em casos de falha grave de funcionamento atribuível à uPaiva — analisados caso a caso.</p>
+
+  <h2>7. Modo "Auto Pleno" — termo específico</h2>
+  <div class="warning">
+    <h3>⚠ Atenção: risco elevado</h3>
+    <p>O modo <strong>Auto Pleno</strong> permite configurar a automação <strong>sem teto pré-definido</strong> de follows/dia ou intervalos. Antes de habilitar, você precisa aceitar um <strong>termo específico</strong> dentro da Extensão que detalha:</p>
+    <ul>
+      <li>Risco de action block / follow block temporário no Instagram</li>
+      <li>Risco de banimento ou suspensão permanente da conta</li>
+      <li>Violação dos Termos de Uso da Meta Platforms / Instagram</li>
+      <li>Possibilidade de perda de seguidores, conteúdo, histórico e acesso</li>
+      <li>Isenção total de responsabilidade da uPaiva</li>
+    </ul>
+    <p>A aceitação do termo é registrada com timestamp, device ID, versão do termo e hash SHA-256 do texto, para auditoria legal mútua. Você pode revogar a qualquer momento nas Configurações da Extensão.</p>
+    <p><strong>Os modos "Conservador" e "Moderado" são intencionalmente mais seguros e recomendados como padrão.</strong></p>
   </div>
 
-  <h2>1. Aceitação</h2>
-  <p>Ao instalar, abrir ou usar a extensão Calc Impostos BR uPaiva ("Extensão"), você concorda
-  com estes Termos e com a <a href="privacidade.html">Política de Privacidade</a>. Se não concorda,
-  não use a Extensão.</p>
-
-  <h2>2. O que a Extensão faz</h2>
-  <p>A Calc Impostos é uma calculadora pra freelancers brasileiros que estima:</p>
+  <h2>8. Privacidade e dados</h2>
+  <p>O tratamento dos seus dados é descrito em detalhes na nossa <a href="privacidade.html">Política de Privacidade</a>. Em resumo:</p>
   <ul>
-    <li>Líquido após impostos para os regimes <strong>MEI</strong>, <strong>Pessoa Física Autônoma</strong> e <strong>PJ Simples Nacional</strong> (Anexos III e V com Fator R)</li>
-    <li>O bruto necessário pra receber X líquido (cálculo reverso)</li>
-    <li>Comparação entre regimes com diferenças em R$</li>
-    <li>Próximo vencimento de DAS, GPS, Carnê-Leão, etc.</li>
-    <li>Lucro real de projetos quando informados custos extras (ferramentas, plataformas, terceiros)</li>
-  </ul>
-  <p>A Extensão usa tabelas oficiais 2025. Tabelas mudam anualmente — atualizações virão com
-  novas versões da Extensão.</p>
-
-  <h2>3. Versão Free vs Premium</h2>
-
-  <h3>3.1 Versão Free (gratuita, sem limite de tempo)</h3>
-  <ul>
-    <li>Cálculo MEI completo (todas as categorias)</li>
-    <li>Cálculo PF Autônomo completo (com ISS configurável)</li>
-    <li>Cálculo reverso (MEI/PF)</li>
-    <li>Histórico limitado (3 simulações salvas)</li>
-    <li>Copiar resumo como texto pra colar em WhatsApp/email</li>
-    <li>Custos extras (lucro real)</li>
-    <li>Onboarding e tela "Como usar"</li>
+    <li>Quase tudo fica no seu navegador (<code>chrome.storage.local</code>)</li>
+    <li>Apenas dados mínimos do pagamento e ativação são enviados ao backend uPaiva</li>
+    <li>Sua chave de IA (BYOK) nunca passa pelos nossos servidores</li>
+    <li>Você pode apagar todos os dados a qualquer momento</li>
   </ul>
 
-  <h3>3.2 Versão Premium (paga, vitalícia)</h3>
-  <p>Adiciona ao Free:</p>
+  <h2>9. Isenção de responsabilidade</h2>
+  <p>A Extensão é fornecida <strong>"COMO ESTÁ" (as-is)</strong>, sem garantias expressas ou implícitas de qualquer tipo, incluindo (mas não limitado a) garantias de comerciabilidade, adequação a propósito específico, não-violação ou disponibilidade contínua.</p>
+  <p>A uPaiva <strong>não se responsabiliza</strong> por:</p>
   <ul>
-    <li><strong>PJ Simples Nacional</strong> — Anexo III/V com Fator R automático e pró-labore</li>
-    <li><strong>Comparador entre regimes</strong> — MEI, PF e PJ lado a lado com gráfico de barras</li>
-    <li><strong>Histórico ilimitado</strong> com filtros por regime e mês</li>
-    <li><strong>Exportar PDF profissional</strong> com gráfico, branding e disclaimer</li>
-    <li><strong>Exportar CSV</strong> em formato relatório (com totalizadores)</li>
-    <li><strong>Alertas inteligentes avançados</strong> (projeção de teto MEI, sugestões de migração de regime)</li>
+    <li>Banimentos, suspensões, action blocks ou restrições aplicadas pelo Instagram à sua conta</li>
+    <li>Perda de seguidores, conteúdo, histórico ou acesso</li>
+    <li>Mudanças na API interna do Instagram que tornem funcionalidades inoperantes</li>
+    <li>Uso indevido da Extensão por você ou por terceiros</li>
+    <li>Falhas dos provedores de IA terceiros (Anthropic, OpenAI, Google) configurados via BYOK</li>
   </ul>
+  <p>Em qualquer hipótese, a responsabilidade da uPaiva limita-se ao valor efetivamente pago pelo plano Premium ativo no momento do evento.</p>
 
-  <div class="price-callout">
-    <span class="lifetime">Oferta de lançamento</span>
-    <span class="amount">R$ 19,99 <span class="strike">R$ 39,99</span></span>
-    <p class="terms-mini">Pagamento único · acesso vitalício · até 2 dispositivos · sem mensalidade</p>
-  </div>
+  <h2>10. Não-afiliação ao Instagram</h2>
+  <p>A InstaGrowth IA uPaiva <strong>não é afiliada, endossada, patrocinada ou de qualquer forma associada à Meta Platforms, Inc., ao Instagram ou a qualquer empresa do grupo Meta</strong>. Todos os nomes, logos e marcas mencionados pertencem aos seus respectivos titulares.</p>
 
-  <h2>4. Como funciona o pagamento Premium</h2>
-  <ul>
-    <li><strong>Forma de pagamento:</strong> PIX, processado via Mercado Pago Brasil</li>
-    <li><strong>Confirmação:</strong> automática (até 5 minutos após o pagamento)</li>
-    <li><strong>Entrega:</strong> chave de licença enviada para o e-mail informado</li>
-    <li><strong>Vinculação:</strong> chave fica vinculada ao seu e-mail e funciona em até 2 dispositivos simultâneos</li>
-    <li><strong>Validade:</strong> vitalícia (até 100 anos a partir da compra)</li>
-  </ul>
-
-  <h2>5. Reembolso</h2>
-  <p>Por se tratar de produto digital de uso imediato, o reembolso pode ser solicitado
-  <strong>em até 7 (sete) dias corridos a partir da data da compra</strong>, conforme
-  Art. 49 do Código de Defesa do Consumidor (Lei 8.078/90).</p>
-  <p>Pra solicitar reembolso:</p>
-  <ol>
-    <li>Envie e-mail pra <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a> com assunto "Reembolso"</li>
-    <li>Inclua o e-mail usado na compra</li>
-    <li>Reembolso é processado em até 7 dias úteis via PIX (mesmo método)</li>
-    <li>Após o reembolso, a chave de licença é revogada</li>
-  </ol>
-  <p>Após 7 dias da compra, não há reembolso (mas a licença continua válida vitaliciamente).</p>
-
-  <h2>6. Limite de dispositivos e troca</h2>
-  <p>Cada licença Premium ativa em até <strong>2 dispositivos simultâneos</strong>.</p>
-  <p>Se você precisar trocar pra um terceiro dispositivo (ex.: computador novo) e atingir o limite,
-  use o fluxo <em>"Recuperar por e-mail"</em> dentro da extensão. Você receberá um código
-  de 6 dígitos que reautoriza o dispositivo atual. Dispositivos antigos podem ser
-  desautorizados pelo nosso suporte mediante solicitação.</p>
-
-  <h2>7. Conduta proibida</h2>
-  <p>É expressamente proibido:</p>
-  <ul>
-    <li>Revender, sublicenciar ou redistribuir a chave Premium</li>
-    <li>Tentar fazer engenharia reversa, desofuscar ou extrair código-fonte com fins comerciais</li>
-    <li>Usar a Extensão para fins ilegais, fraudulentos ou que prejudiquem terceiros</li>
-    <li>Tentar burlar limites de dispositivos com múltiplas contas</li>
-    <li>Compartilhar chave com terceiros</li>
-  </ul>
-  <p>Violações resultam em <strong>revogação da licença sem reembolso</strong> e podem ser
-  reportadas às autoridades quando aplicável.</p>
-
-  <h2>8. Atualizações da Extensão</h2>
-  <p>A Extensão é atualizada periodicamente pra:</p>
-  <ul>
-    <li>Refletir mudanças nas tabelas tributárias (IRPF, INSS, MEI DAS, Simples Nacional)</li>
-    <li>Corrigir bugs e melhorar performance</li>
-    <li>Adicionar funcionalidades novas (algumas Free, outras só Premium)</li>
-  </ul>
-  <p>A Chrome Web Store distribui as atualizações automaticamente. Não há ação necessária da
-  sua parte. Sua licença Premium continua válida em todas as versões futuras.</p>
-
-  <h2>9. Disponibilidade do serviço</h2>
-  <p>O backend de licenciamento (necessário pra ativação inicial e recuperação) é hospedado na
-  Railway com banco Supabase. Nos esforçamos pra manter <strong>disponibilidade de 99% mensal</strong>,
-  mas não garantimos uptime absoluto. Se houver indisponibilidade prolongada (mais de 24h),
-  considere o seguinte:</p>
-  <ul>
-    <li>Os cálculos da Extensão funcionam <strong>100% offline</strong> mesmo sem o backend</li>
-    <li>Apenas a ativação Premium e a recuperação por e-mail dependem do backend</li>
-    <li>Se você já ativou em pelo menos 1 dispositivo, continua usando o Premium normalmente</li>
-  </ul>
-
-  <h2>10. Limitação de responsabilidade</h2>
-  <div class="warning-box">
-    <strong>Importante:</strong> A Extensão é fornecida "como está". A responsabilidade total
-    do uPaiva, em qualquer hipótese, é limitada ao valor pago pelo Premium nos últimos 12 meses
-    (que no plano vitalício significa o valor original da compra).
-  </div>
-  <p>Especificamente, <strong>não nos responsabilizamos por</strong>:</p>
-  <ul>
-    <li>Decisões tributárias tomadas com base nos cálculos da Extensão</li>
-    <li>Multas, autuações, retenções incorretas ou perdas financeiras decorrentes do uso</li>
-    <li>Mudanças em tabelas tributárias que ainda não foram refletidas em uma nova versão</li>
-    <li>Indisponibilidade temporária do backend (Railway, Supabase, Mercado Pago, Resend)</li>
-    <li>Problemas no Chrome ou no sistema operacional do usuário</li>
-    <li>Perda de dados locais (chrome.storage) — recomendamos exportar o histórico periodicamente</li>
-  </ul>
-
-  <h2>11. Propriedade intelectual</h2>
-  <p>O código, design, logo, conteúdo e nome "Calc Impostos BR uPaiva" são propriedade do uPaiva.
-  Você recebe uma licença pessoal, intransferível e revogável pra usar a Extensão conforme estes
-  Termos. Não há transferência de propriedade.</p>
+  <h2>11. Suspensão e encerramento</h2>
+  <p>A uPaiva pode suspender ou encerrar seu acesso à Extensão em caso de violação destes Termos, incluindo (mas não limitado a) uso para spam, tentativa de fraude na license key, ou descumprimento de obrigações de pagamento. Em casos de violação grave, o cancelamento é imediato e sem reembolso proporcional.</p>
 
   <h2>12. Modificações destes Termos</h2>
-  <p>Podemos atualizar estes Termos a qualquer momento. Mudanças relevantes (preço, regras de
-  reembolso, limite de dispositivos) serão comunicadas com <strong>30 dias de antecedência</strong>
-  via e-mail (Premium) ou banner na Extensão (Free). Mudanças menores (correção de digitação,
-  esclarecimento) entram em vigor imediatamente.</p>
-  <p>O uso continuado após a notificação significa aceitação. Se você não concordar, pode pedir
-  reembolso (se ainda dentro de 7 dias da compra) ou parar de usar.</p>
+  <p>A uPaiva pode atualizar estes Termos a qualquer momento. A data no topo indica a última revisão. Mudanças relevantes serão comunicadas dentro da Extensão e/ou por e-mail. O uso continuado após uma atualização significa aceite dos novos termos.</p>
 
   <h2>13. Lei aplicável e foro</h2>
-  <p>Estes Termos são regidos pelas leis da <strong>República Federativa do Brasil</strong>.</p>
-  <p>Para questões de consumo (Premium), o foro competente é o do <strong>domicílio do consumidor</strong>
-  (Art. 101, I, CDC). Para outras questões, o foro da Comarca de São José dos Campos/SP.</p>
+  <p>Estes Termos são regidos pelas leis da <strong>República Federativa do Brasil</strong>. Eventuais disputas serão resolvidas no foro da comarca de domicílio do usuário, salvo se a lei determinar foro distinto.</p>
 
   <h2>14. Contato</h2>
-  <p>Suporte e atendimento: <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a></p>
-  <p>Tempo médio de resposta: <strong>1 a 2 dias úteis</strong>.</p>
+  <p>Dúvidas sobre estes Termos? Entre em contato:</p>
+  <ul>
+    <li>E-mail: <a href="mailto:suporte@upaiva.dev">suporte@upaiva.dev</a></li>
+    <li>Site: <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a></li>
+    <li>Página de suporte: <a href="suporte.html">suporte.html</a></li>
+  </ul>
 
   <footer>
-    <p>Calc Impostos BR uPaiva · <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a></p>
-    <p>Não somos afiliados à Receita Federal, INSS, Mercado Pago ou Google.</p>
+    <div class="nav-links">
+      <a href="privacidade.html">Política de Privacidade</a>
+      <a href="suporte.html">Suporte</a>
+      <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a>
+    </div>
+    <p style="margin-top: 16px;">© 2026 uPaiva. Todos os direitos reservados.</p>
   </footer>
 
 </div>

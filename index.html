@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InstaGrowth IA uPaiva — extensão Chrome para crescimento estratégico no Instagram com IA. Descoberta inteligente, organização e BYOK.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="InstaGrowth IA uPaiva — Cresça com estratégia">
+<meta property="og:description" content="Descubra perfis, organize oportunidades e use IA (sua chave) para hashtags, conteúdo e rotina.">
+<meta property="og:type" content="website">
+<title>InstaGrowth IA uPaiva — Cresça com estratégia no Instagram</title>
+<style>
+  :root {
+    --bg-base: #080A12;
+    --bg-surface: #0D1020;
+    --bg-card: #12172A;
+    --bg-elevated: #171D33;
+    --border-subtle: #252B45;
+    --color-blue: #3B82F6;
+    --color-purple: #8B5CF6;
+    --color-green: #22C55E;
+    --color-warning: #FACC15;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 45%, #22C55E 100%);
+    --glow-purple: 0 0 40px rgba(139, 92, 246, 0.35);
+    --glow-blue: 0 0 32px rgba(59, 130, 246, 0.25);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.65;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(59, 130, 246, 0.08), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.10), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.04), transparent 60%);
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+
+  /* ─── HERO ──────────────────────────────────────── */
+  .hero { text-align: center; margin-bottom: 64px; }
+  .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .logo-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -1px;
+    box-shadow: var(--glow-purple);
+  }
+  .logo-text { text-align: left; }
+  .logo-text h1 {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+  }
+  .logo-text .brand {
+    color: var(--color-purple);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero-tagline {
+    font-size: 52px;
+    font-weight: 900;
+    margin: 24px 0 16px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+  .hero-pills {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .pill.highlight {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.10));
+    border-color: rgba(139, 92, 246, 0.4);
+    color: var(--text-primary);
+  }
+
+  /* ─── SECTION ───────────────────────────────────── */
+  .section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 56px 0 24px;
+    font-weight: 700;
+  }
+
+  /* ─── CARDS DE LINKS ────────────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .card-link {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .card-link:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-purple);
+  }
+  .card-link:hover::before { opacity: 1; }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-subtle);
+  }
+  .card-link.privacy .card-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  .card-link.terms .card-icon {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05));
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+  .card-link.support .card-icon {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.05));
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    color: var(--text-primary);
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .card-arrow {
+    font-size: 13px;
+    color: var(--color-purple);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ─── FEATURES ─────────────────────────────────── */
+  .features {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 40px 32px;
+    margin-bottom: 48px;
+  }
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin: 24px 0 0;
+    list-style: none;
+    padding: 0;
+  }
+  .features-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .features-list .check {
+    color: var(--color-green);
+    font-weight: 900;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .features-list strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .features-list span {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  /* ─── CTA ───────────────────────────────────────── */
+  .cta-box {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.10), rgba(59, 130, 246, 0.06));
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 20px;
+    padding: 40px 32px;
+    margin-bottom: 48px;
+    box-shadow: var(--glow-purple);
+  }
+  .cta-box h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+    color: var(--text-primary);
+  }
+  .cta-box p {
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+    font-size: 15px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    box-shadow: var(--glow-purple);
+    transition: transform 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); }
+
+  /* ─── FOOTER ───────────────────────────────────── */
+  footer {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  footer a {
+    color: var(--color-purple);
+    text-decoration: none;
+    margin: 0 8px;
+  }
+  footer a:hover { text-decoration: underline; }
+  .disclaimer {
+    margin-top: 24px;
+    font-size: 11px;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .hero-tagline { font-size: 36px; }
+    .hero-sub { font-size: 16px; }
+    .logo-icon { width: 56px; height: 56px; font-size: 24px; }
+    .logo-text h1 { font-size: 22px; }
+    .container { padding: 40px 16px 64px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo-wrapper">
+      <div class="logo-icon">iG</div>
+      <div class="logo-text">
+        <h1>InstaGrowth IA</h1>
+        <span class="brand">uPaiva</span>
+      </div>
+    </div>
+
+    <h2 class="hero-tagline">Cresça com estratégia.<br>Não no escuro.</h2>
+    <p class="hero-sub">Extensão Chrome com descoberta inteligente de perfis, organização de oportunidades e IA (sua chave) pra hashtags, conteúdo e rotina.</p>
+
+    <div class="hero-pills">
+      <span class="pill highlight">★ BYOK · sua chave de IA</span>
+      <span class="pill">🔒 Privacidade local</span>
+      <span class="pill">📊 Dashboard com métricas</span>
+      <span class="pill">⚡ PIX único</span>
+    </div>
+  </section>
+
+  <!-- LINKS PARA POLÍTICA / TERMOS / SUPORTE -->
+  <p class="section-title">📚 Documentação Legal</p>
+
+  <div class="cards-grid">
+    <a href="privacidade.html" class="card-link privacy">
+      <div class="card-icon">🔒</div>
+      <h3 class="card-title">Política de Privacidade</h3>
+      <p class="card-desc">O que coletamos, o que armazenamos localmente e o que NÃO fazemos com seus dados.</p>
+      <span class="card-arrow">Ler política →</span>
+    </a>
+
+    <a href="termos.html" class="card-link terms">
+      <div class="card-icon">📜</div>
+      <h3 class="card-title">Termos de Uso</h3>
+      <p class="card-desc">Condições, restrições, planos Premium, direito de arrependimento (CDC Art. 49).</p>
+      <span class="card-arrow">Ler termos →</span>
+    </a>
+
+    <a href="suporte.html" class="card-link support">
+      <div class="card-icon">💬</div>
+      <h3 class="card-title">Suporte</h3>
+      <p class="card-desc">FAQ, e-mail de contato, instruções de exclusão de dados, status do servidor.</p>
+      <span class="card-arrow">Falar com a gente →</span>
+    </a>
+  </div>
+
+  <!-- FEATURES RESUMIDAS -->
+  <div class="features">
+    <p class="section-title" style="margin-top: 0;">✨ Por que InstaGrowth IA?</p>
+    <ul class="features-list">
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>Descoberta inteligente</strong>
+          <span>Captura contextual de perfis pelo conteúdo da página aberta</span>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>IA com sua chave</strong>
+          <span>Anthropic, OpenAI ou Google — chave nunca sai do seu navegador</span>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>Privacidade total</strong>
+          <span>Tudo em chrome.storage.local. Sem rastreamento, sem analytics.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>Compra única</strong>
+          <span>Sem recorrência. PIX via Mercado Pago. Reembolso em 7 dias.</span>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>Growth Coach IA</strong>
+          <span>Hashtags, plano semanal, análise e textos prontos pro feed</span>
+        </div>
+      </li>
+      <li>
+        <span class="check">✓</span>
+        <div>
+          <strong>Open about itself</strong>
+          <span>Não somos afiliados ao Instagram. Termos e privacy públicos.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Pronto pra começar?</h2>
+    <p>Instale grátis na Chrome Web Store ou conheça mais em upaiva.dev</p>
+    <a href="https://upaiva.dev" target="_blank" rel="noopener" class="btn-primary">Visitar upaiva.dev →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a href="privacidade.html">Privacidade</a> ·
+      <a href="termos.html">Termos</a> ·
+      <a href="suporte.html">Suporte</a> ·
+      <a href="https://upaiva.dev" target="_blank" rel="noopener">upaiva.dev</a>
+    </div>
+    <p style="margin-top: 16px;">© 2026 uPaiva. Todos os direitos reservados.</p>
+    <p class="disclaimer">
+      A InstaGrowth IA uPaiva não é afiliada, endossada ou patrocinada pela Meta Platforms, Inc. ou pelo Instagram.
+      Todos os nomes, logos e marcas mencionados pertencem aos seus respectivos titulares.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
